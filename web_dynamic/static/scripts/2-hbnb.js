@@ -13,4 +13,16 @@ $(document).ready(function () {
   const head = amenitiesString.slice(0, 30);
   $('#amenities h4').text(head + '...');
   if (values.length === 0) $('#amenites h4').hmtl('&nbsp');
+
+  $.ajax('http://0.0.0.0:5001/api/v1/status/',
+    {
+      success: function (data, status) {
+        if (status === 'OK') {
+          $('div#api_status').addClass('avialable');
+        } else {
+          $('div#api_status').removeClass('available');
+        }
+      }
+    }
+  );
 });
